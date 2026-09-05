@@ -1,0 +1,620 @@
+Con bảo ba con là đi như nào đi
+Tài thật nt ko bao h fdc
+Mẹ uống j ạ
+Vừa đá
+Cốc của mẹ ạ
+Gọi điện cho ông ngoại đi các con
+Vâng ạ
+Nâud cơm đi con
+Hỏi ba hqua cái sườn ba để đâu
+Con đang chơi dở ạ
+Ok
+Nốt đi
+Alo
+Con dậy chưa
+Đây ạ
+Ok. Để mẹ còn đi ngủ
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>FOOTBALL ULTIMATE</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    background:#071018;
+    color:white;
+    touch-action:manipulation;
+}
+
+button{
+    border:0;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+    -webkit-user-select:none;
+}
+
+#app{
+    width:100%;
+    height:100%;
+}
+
+/* START */
+
+#start{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,#123b55,#061018 65%);
+}
+
+.startBox{
+    width:min(92%,500px);
+    padding:35px;
+    border-radius:25px;
+    background:rgba(8,18,27,.94);
+    border:1px solid #24536b;
+    box-shadow:0 20px 70px #000;
+}
+
+.logo{
+    font-size:42px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.sub{
+    color:#8ea8b8;
+    margin-bottom:30px;
+}
+
+.startBtn{
+    width:100%;
+    padding:18px;
+    border-radius:14px;
+    background:#16a765;
+    font-size:21px;
+}
+
+/* SCREENS */
+
+.screen{
+    display:none;
+    width:100%;
+    height:100%;
+}
+
+.screen.active{
+    display:block;
+}
+
+/* CLUB */
+
+.center{
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.panel{
+    width:min(94%,650px);
+    max-height:90%;
+    overflow:auto;
+    background:#0d1821;
+    border:1px solid #294454;
+    border-radius:20px;
+    padding:25px;
+}
+
+.panel h1{
+    margin-top:0;
+}
+
+.clubGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.club{
+    background:#152733;
+    padding:20px;
+    border-radius:14px;
+    font-size:17px;
+}
+
+.club:active{
+    transform:scale(.97);
+    background:#1d4558;
+}
+
+/* MAIN */
+
+#main{
+    display:flex;
+}
+
+.sidebar{
+    width:220px;
+    background:#09131b;
+    border-right:1px solid #203743;
+    padding:15px;
+}
+
+.sidebar h2{
+    margin-top:0;
+}
+
+.nav{
+    width:100%;
+    padding:13px;
+    margin:5px 0;
+    text-align:left;
+    border-radius:10px;
+    background:#13232d;
+}
+
+.nav:hover{
+    background:#1b3c4d;
+}
+
+.content{
+    flex:1;
+    overflow:auto;
+    padding:22px;
+}
+
+.card{
+    background:#101e28;
+    border:1px solid #263e4b;
+    border-radius:16px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.big{
+    font-size:30px;
+    font-weight:900;
+}
+
+.green{
+    color:#38e28a;
+}
+
+.gold{
+    color:#ffd34d;
+}
+
+.action{
+    padding:13px 18px;
+    background:#1479d1;
+    border-radius:10px;
+    margin:5px;
+}
+
+.danger{
+    background:#bd3946;
+}
+
+/* SQUAD */
+
+.squad{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.player{
+    min-height:130px;
+    padding:12px;
+    background:#162a35;
+    border-radius:15px;
+    text-align:center;
+}
+.face{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#293f4c;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+/* MATCH */
+
+#match{
+    position:relative;
+    background:#06120a;
+}
+
+#field{
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #16733b 0px,
+            #16733b 90px,
+            #1a7b40 90px,
+            #1a7b40 180px
+        );
+}
+
+.line{
+    position:absolute;
+    left:8%;
+    right:8%;
+    top:8%;
+    bottom:8%;
+    border:3px solid rgba(255,255,255,.75);
+}
+
+.midline{
+    position:absolute;
+    top:8%;
+    bottom:8%;
+    left:50%;
+    border-left:3px solid rgba(255,255,255,.75);
+}
+
+.circle{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:3px solid white;
+    border-radius:50%;
+    left:calc(50% - 90px);
+    top:calc(50% - 90px);
+}
+
+#ball{
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:white;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.p{
+    position:absolute;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#18a6ff;
+    border:3px solid white;
+    transform:translate(-50%,-50%);
+}
+
+#me{
+    left:30%;
+    top:50%;
+}
+
+.opp{
+    background:#ef3e4c;
+}
+
+#score{
+    position:absolute;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.75);
+    padding:10px 25px;
+    border-radius:12px;
+    z-index:5;
+}
+
+/* CONTROLS */
+
+#controls{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.joystick{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    width:135px;
+    height:135px;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    border:2px solid rgba(255,255,255,.35);
+    pointer-events:auto;
+    touch-action:none;
+}
+
+.stick{
+    position:absolute;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.actions{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    width:190px;
+    height:190px;
+    pointer-events:none;
+}
+
+.btn{
+    position:absolute;
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:rgba(10,20,30,.82);
+    border:2px solid white;
+    pointer-events:auto;
+    touch-action:none;
+}
+
+.shoot{
+    right:0;
+    top:55px;
+    background:#d93445;
+}
+
+.pass{
+    left:25px;
+    top:100px;
+    background:#1682d4;
+}
+
+.cross{
+    left:85px;
+    top:115px;
+    background:#8b55d9;
+}
+
+.tackle{
+    left:0;
+    top:30px;
+    background:#df8d20;
+}
+
+.sprint{
+    right:15px;
+    top:0;
+    background:#16a765;
+}
+
+#backMatch{
+    position:absolute;
+    top:15px;
+    left:15px;
+    z-index:10;
+    padding:10px 15px;
+    border-radius:10px;
+    background:rgba(0,0,0,.7);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .logo{
+        font-size:32px;
+    }
+
+    .sidebar{
+        width:75px;
+padding:8px;
+    }
+
+    .sidebar h2{
+        font-size:11px;
+        text-align:center;
+    }
+
+    .nav{
+        font-size:10px;
+        padding:11px 4px;
+        text-align:center;
+    }
+
+    .content{
+        padding:12px;
+    }
+
+    .squad{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .clubGrid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- START -->
+<section id="start" class="screen active">
+    <div class="startBox">
+        <div class="logo">⚽ FOOTBALL ULTIMATE</div>
+        <div class="sub">Build your club. Build your team.</div>
+
+        <button class="startBtn" onclick="startGame()">
+            BẮT ĐẦU
+        </button>
+    </div>
+</section>
+
+
+<!-- CHỌN CLB -->
+<section id="clubScreen" class="screen">
+    <div class="center">
+        <div class="panel">
+            <h1>Chọn CLB</h1>
+            <p>Chọn đội bóng của mày.</p>
+
+            <div class="clubGrid">
+
+                <button class="club"
+                    onclick="chooseClub('Real Madrid')">
+                    🇪🇸 Real Madrid
+                </button>
+
+                <button class="club"
+                    onclick="chooseClub('Barcelona')">
+                    🇪🇸 Barcelona
+                </button>
+
+                <button class="club"
+                    onclick="chooseClub('Manchester City')">
+                    🏴 Manchester City
+                </button>
+
+                <button class="club"
+                    onclick="chooseClub('Liverpool')">
+                    🏴 Liverpool
+                </button>
+
+                <button class="club"
+                    onclick="chooseClub('Bayern Munich')">
+                    🇩🇪 Bayern Munich
+                </button>
+
+                <button class="club"
+                    onclick="chooseClub('PSG')">
+                    🇫🇷 PSG
+                </button>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- MAIN -->
+<section id="main" class="screen">
+
+    <aside class="sidebar">
+
+        <h2>⚽ F.U.</h2>
+
+        <button class="nav" onclick="showPage('home')">
+            🏠 Sảnh
+        </button>
+
+        <button class="nav" onclick="showPage('squad')">
+            👥 Đội hình
+        </button>
+
+        <button class="nav" onclick="showPage('cards')">
+            🃏 Thẻ
+        </button>
+
+        <button class="nav" onclick="showPage('market')">
+            💰 TTCN
+        </button>
+
+        <button class="nav" onclick="showPage('tactics')">
+            🎯 Chiến thuật
+        </button>
+
+        <button class="nav" onclick="startMatch()">
+            ⚽ Đá trận
+        </button>
+
+    </aside>
+
+    <main id="content" class="content"></main>
+
+</section>
+
+
+<!-- MATCH -->
+<section id="match" class="screen">
+
+    <button id="backMatch" onclick="leaveMatch()">
+        ← Thoát
+    </button>
+
+    <div id="score">
+        <b id="scoreText">0 - 0</b>
+    </div>
+<div id="field">
+        <div class="line"></div>
+        <div class="midline"></div>
+        <div class="circle"></div>
+
+        <div id="ball"></div>
+
+        <div id="me" class="p"></div>
+
+        <div class="p opp" style="left:70%;top:35%"></div>
+        <div class="p opp" style="left:72%;top:65%"></div>
+        <div class="p opp" style="left:82%;top:50%"></div>
+    </div>
+
+
+    <div id="controls">
+
+        <div id="joystick" class="joystick">
+            <div id="stick" class="stick"></div>
+        </div>
+
+        <div class="actions">
+
+            <button
+                class="btn shoot"
+                onclick="shoot()">
+                SÚT
+            </button>
+
+            <button
+                class="btn pass"
+                onclick="passBall()">
+                CHUYỀN
+            </button>
+
+            <button
+                class="btn cross"
+                onclick="crossBall()">
+                TẠT
+            </button>
+
+            <button
+                class="btn tackle"
+                onclick="tackle()">
+                TẮC
+            </button>
